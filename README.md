@@ -18,6 +18,8 @@ Confirm proposed features, installation copy and arrangements, subscription term
 
 This site showcases solutions and illustrative tracking concepts. There is no quote form or submission backend. Real installation photos and customer project descriptions can be added when supplied; concept previews are not presented as completed work.
 
+The “Follow the Journey” design includes keyboard-accessible vehicle tabs, selectable process markers, scroll progress/navigation, expandable features, and a sample route player with pause, reset, and scrubbing. Playback starts only on request and pauses when the demo leaves the viewport or the browser tab is hidden. Reduced-motion preferences disable the decorative scroll animation. Shared original SVG illustrations live in `src/visuals.js`.
+
 ## Verification
 
 `npm test` runs browser checks (requires Playwright Chromium). Includes desktop/mobile overflow, navigation/menu, FAQ keyboard interaction, privacy dialog, showcase links and absence of quote forms. `npm run build` creates the production bundle. The tracking UI is always labeled illustrative and uses sample data.

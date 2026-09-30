@@ -19,7 +19,7 @@ export const business = {
     ['How does installation work?', 'Installation arrangements, location, timing, and any charges will be discussed before booking. The process shown here is a draft and requires business confirmation.'],
     ['Can I track my vehicle on my phone?', 'Mobile access is a proposed feature. Supported devices, app availability, and account requirements will be confirmed with your recommended solution.'],
     ['Is there a monthly subscription?', 'Pricing, subscription periods, data inclusions, and renewal terms are still to be confirmed.'],
-    ['Are the dashboard previews actual software?', 'The desktop and mobile previews are illustrative concepts using sample data. They demonstrate how tracking information can be presented and do not represent confirmed KA-TRACKER software or completed customer projects.']
+    ['Is the interactive demo actual tracking software?', 'The journey explorer is an illustrative concept using sample data. It demonstrates how tracking information can be presented and does not represent confirmed KA-TRACKER software or completed customer projects.']
   ],
   privacy: 'This showcase website does not collect information through forms or use analytics or tracking cookies. It is hosted on GitHub Pages and loads fonts from Google Fonts; those providers may process technical request information such as IP addresses. Business privacy contact details and provider disclosures remain subject to review.'
 };
