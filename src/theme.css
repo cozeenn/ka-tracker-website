@@ -1,0 +1,47 @@
+/* Static gradients add depth without competing with the journey interactions. */
+:root{--paper:#edf3f8;--line:#cedae3;--muted:#526675}
+body{background:#e7eff5}
+header{background:linear-gradient(110deg,#f5f8fb,#e8f0f6);border-bottom-color:#cedae3}
+.hero{color:#f5f8fb;background:radial-gradient(ellipse at 84% 45%,#ff9d001d,transparent 43%),radial-gradient(ellipse at 53% 100%,#376b8433,transparent 55%),linear-gradient(120deg,#04172f 15%,#0a2947 58%,#173e59)}
+.hero h1 span{color:#ffb52e}
+.hero-copy>p,.hero .edition,.hero .tagline{color:#c0d0de}
+.hero-top>.eyebrow{color:#ffbd51}
+.hero-bottom{border-color:#ffffff26;color:#c0d0de}
+.hero-bottom i{color:#ffb52e}
+.journey-poster{background:radial-gradient(ellipse at 65% 40%,#ffb52e24,transparent 68%),linear-gradient(145deg,#ffffff0b,#ffffff03);border:1px solid #ffffff12}
+.hero-road>path:first-child{stroke:#8ba4b829}
+.hero-road>path:nth-child(2){stroke:#b9d0df}
+.poster-label{background:#102d47;color:#d4e2eb;border:1px solid #ffffff16}
+.destination{background:linear-gradient(135deg,#0c2744,#21445e);border:1px solid #ffffff26;box-shadow:6px 6px 0 #04172f38}
+.coordinate,.coordinate span{color:#c4d4e0}
+.poster-stamp{color:#d6e4ed;border-color:#8ba4b86b;background:#09263b66}
+.poster-truck .vehicle-art{filter:drop-shadow(0 24px 18px #010d2055)}
+.route-nav{background:linear-gradient(100deg,#04172f,#123550);border-top:1px solid #ffffff12;box-shadow:0 6px 22px #04172f12}
+#solutions{background:radial-gradient(ellipse at 95% 0%,#fff5e45e,transparent 50%),linear-gradient(145deg,#edf3f8,#dce7ef)}
+.vehicle-tabs{background:#ffffff28}
+.vehicle-tabs button[aria-selected=true]{background:#ffffff78}
+.vehicle-scene{background:radial-gradient(ellipse at 38% 35%,#fff0c333,transparent 65%),linear-gradient(135deg,#d9e6ed,#c9dbe6)}
+.scene-sun{background:radial-gradient(circle at 35% 30%,#ffd779,#ffb52e);box-shadow:0 0 60px #ffb52e16}
+.scene-road{background:#b7cbd6;border-color:#8faab9}
+.scene-caption{color:#3a5668}
+.approach{background:linear-gradient(155deg,#e7eff5,#d7e3ed)}
+.approach-layout{border-color:#bdcdd9}
+.station-map{background-color:#e2ecf3;background-image:radial-gradient(#9bb0c0 1px,transparent 1px)}
+.station-map>svg>path:first-child{stroke:#cedde7}
+.station{background:#f3f7fa;box-shadow:0 0 0 8px #f3f7fa80}
+.map-word{color:#516978}
+#station-detail{background:linear-gradient(135deg,#f8fafc,#eaf1f6)}
+.note{color:#566a78}
+.tracking{background-image:linear-gradient(#b4d2e407 1px,transparent 1px),linear-gradient(90deg,#b4d2e407 1px,transparent 1px),radial-gradient(ellipse at 90% 90%,#ff9d0012,transparent 55%),linear-gradient(135deg,#04172f,#123952);background-size:48px 48px,48px 48px,auto,auto}
+.demo-console{background:#f2f6f9;border-color:#89acc060;box-shadow:0 24px 65px #000d2338}
+.demo-top,.trip-info{background:linear-gradient(145deg,#f8fafc,#e9f1f6)}
+#features{background:radial-gradient(ellipse at 0% 70%,#fff6e85c,transparent 65%),linear-gradient(140deg,#edf3f8,#dfe9f1)}
+.feature-number{color:#526675}
+.about{background:radial-gradient(ellipse at 18% 35%,#ffe6b559,transparent 55%),linear-gradient(120deg,#fff5e4,#e9eef2)}
+.logo-paper{box-shadow:10px 15px 0 #bbbfbc30,0 18px 45px #5e5e3c0b}
+.about p{color:#526675}
+#faqs{background:linear-gradient(135deg,#edf3f8,#dce7ef)}
+footer{background:radial-gradient(ellipse at 95% 5%,#ff9d0010,transparent 55%),linear-gradient(120deg,#04172f,#123952)}
+.button,.trip-controls .button{color:#06234b;background-color:#ff9d00;background-image:linear-gradient(115deg,#ffb52e,#ff9500);background-size:160% 100%;background-position:0 50%;box-shadow:0 3px 8px #9c570012;transition:background-position var(--motion-duration) var(--motion-ease),color var(--motion-duration) var(--motion-ease),box-shadow var(--motion-duration) var(--motion-ease),translate var(--motion-duration) var(--motion-ease),scale var(--motion-fast) var(--motion-ease)}
+@media(hover:hover){.button:hover,.trip-controls .button:hover{background-image:linear-gradient(115deg,#ffb52e,#ff9500);background-position:100% 50%;box-shadow:0 6px 20px #e78b002b}.vehicle-tabs button:hover{background-color:#ffffff80}.menu-toggle:hover,#reset-trip:hover,.dialog-close:hover{background-color:#dce7ef}}
+@media(max-width:900px){nav{background:linear-gradient(120deg,#f5f8fb,#e8f0f6)}}

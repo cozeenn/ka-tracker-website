@@ -1,4 +1,5 @@
 import { business as b } from './config.js';
+import './theme.css';
 import { animateContent, setupMotion } from './motion.js';
 import { vehicleIllustration } from './vehicles.js';
 import { esc, icon, brand, map, truck } from './visuals.js';
