@@ -1,32 +1,18 @@
 ﻿import { test, expect } from '@playwright/test';
-test('desktop navigation, FAQ, privacy and honest demo form',async({page})=>{
+test('showcase navigation, FAQ and privacy',async({page})=>{
  await page.goto('/');
  await expect(page).toHaveTitle(/KA-TRACKER/);
- await page.getByRole('link',{name:'Get a Quote'}).first().click();
- await expect(page).toHaveURL(/#contact/);
- await page.getByRole('button',{name:'Check inquiry (demo)'}).click();
- await expect(page.locator('#name')).toBeFocused();
- await expect(page.locator('[aria-invalid="true"]')).toHaveCount(5);
- await page.locator('#name').fill('Test Customer');
- await page.locator('#email').fill('invalid');
- await page.locator('#mobile').fill('123');
- await page.locator('#vehicle').selectOption('Personal vehicles');
- await page.locator('#count').fill('0');
- await page.getByRole('button',{name:'Check inquiry (demo)'}).click();
- await expect(page.locator('#email-error')).toContainText('valid email');
- await expect(page.locator('#mobile-error')).toContainText('Philippine');
- await expect(page.locator('#count-error')).toContainText('whole number');
- await page.locator('#email').fill('test@example.com');
- await page.locator('#mobile').fill('+63 917 123 4567');
- await page.locator('#count').fill('2');
- let posted=false;page.on('request',r=>{if(r.method()==='POST')posted=true;});
- await page.getByRole('button',{name:'Check inquiry (demo)'}).click();
- await expect(page.getByRole('status')).toContainText('no inquiry has been sent or saved');
- expect(posted).toBe(false);
+ await page.getByRole('link',{name:'View Showcase'}).first().click();
+ await expect(page).toHaveURL(/#showcase/);
+ await expect(page.locator('form')).toHaveCount(0);
+ await expect(page.getByText(/get a quote|request a quote|inquiry form/i)).toHaveCount(0);
+ for (const href of await page.locator('a[href^="#"]').evaluateAll(links=>links.map(a=>a.getAttribute('href')))) {
+   await expect(page.locator(href)).toHaveCount(1);
+ }
  const question=page.locator('summary').first();await question.focus();await page.keyboard.press('Enter');
  await expect(page.locator('details').first()).toHaveAttribute('open','');
  await page.keyboard.press('Enter');await expect(page.locator('details').first()).not.toHaveAttribute('open','');
- await page.getByRole('button',{name:'draft privacy policy',exact:true}).click();await expect(page.locator('dialog')).toBeVisible();
+ await page.getByRole('button',{name:'Privacy policy'}).click();await expect(page.locator('dialog')).toBeVisible();
  await page.keyboard.press('Escape');await expect(page.locator('dialog')).not.toBeVisible();
  await expect(page.locator('a[href^="tel:"],a[href^="mailto:"]')).toHaveCount(0);
 });

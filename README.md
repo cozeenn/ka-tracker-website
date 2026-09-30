@@ -12,12 +12,12 @@ GitHub Pages deployment is configured in `.github/workflows/deploy.yml`. Once Pa
 
 The supplied logo is installed unchanged at `public/ka-tracker-logo.jpg` and used in the header, footer, favicon, and social-sharing metadata. Its proportions are preserved. Edit `src/config.js` to supply phone, email, service area, Facebook URL, and public website origin. Empty contacts do not produce contact links.
 
-Confirm proposed features, installation copy and arrangements, subscription terms, compatibility, app access, and FAQs. Update answers, then set the feature/installation confirmation flags. Review and replace draft privacy text with approved business details. Update the quote FAQ when enabling submission.
+Confirm proposed features, installation copy and arrangements, subscription terms, compatibility, app access, and FAQs. Update answers, then set the feature/installation confirmation flags. Review and replace draft privacy text with approved business details. 
 
-## Form integration
+## Showcase website
 
-With an empty `formEndpoint`, the form validates locally and explicitly says nothing was sent or saved. No localStorage, analytics, or tracking cookies are used. Set `formEndpoint` to a backend that accepts JSON fields `name`, `email`, `mobile`, `vehicle`, `count`, and `message`. The backend must validate input, rate-limit abuse, deliver/store the inquiry reliably, and return HTTP 2xx with `{ "success": true }` only after accepting it. Configure CORS for your deployed origin if needed. Never put mail-service secrets in the client. Test real delivery before publishing. Request timeouts and unconfirmed responses never show success.
+This site showcases solutions and illustrative tracking concepts. There is no quote form or submission backend. Real installation photos and customer project descriptions can be added when supplied; concept previews are not presented as completed work.
 
 ## Verification
 
-`npm test` runs browser checks (requires Playwright Chromium). Includes desktop/mobile overflow, navigation/menu, FAQ keyboard interaction, privacy dialog, required/email/mobile/count validation, and demo submission. `npm run build` creates the production bundle. The tracking UI is always labeled illustrative and uses sample data.
+`npm test` runs browser checks (requires Playwright Chromium). Includes desktop/mobile overflow, navigation/menu, FAQ keyboard interaction, privacy dialog, showcase links and absence of quote forms. `npm run build` creates the production bundle. The tracking UI is always labeled illustrative and uses sample data.
