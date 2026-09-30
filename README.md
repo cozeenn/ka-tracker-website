@@ -6,6 +6,8 @@ Responsive, original website built with Vite and plain JavaScript. All illustrat
 
 Run `npm install`, then `npm run dev`. Production: `npm run build`, deploy `dist/` on any static host. On PowerShell with restricted execution policies, use `npm.cmd`.
 
+GitHub Pages deployment is configured in `.github/workflows/deploy.yml`. Once Pages is enabled with GitHub Actions as its source, pushes to `main` build and publish the site at `https://cozeenn.github.io/ka-tracker-website/`. The production base path is configured in `vite.config.js`; update it if moving to another host or a custom domain.
+
 ## Before launch
 
 The supplied logo is installed unchanged at `public/ka-tracker-logo.jpg` and used in the header, footer, favicon, and social-sharing metadata. Its proportions are preserved. Edit `src/config.js` to supply phone, email, service area, Facebook URL, and public website origin. Empty contacts do not produce contact links.

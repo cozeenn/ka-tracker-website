@@ -1,8 +1,8 @@
 // All unconfirmed business details live here. Empty contact values hide links.
 export const business = {
   name: 'KA-TRACKER', tagline: 'Kasama Mo sa Bawat Biyahe.',
-  logoUrl: '/ka-tracker-logo.jpg', phone: '', email: '', serviceArea: '', facebookUrl: '',
-  siteUrl: '', // Set to the public HTTPS origin before launch.
+  logoUrl: `${import.meta.env.BASE_URL}ka-tracker-logo.jpg`, phone: '', email: '', serviceArea: '', facebookUrl: '',
+  siteUrl: 'https://cozeenn.github.io/ka-tracker-website/',
   formEndpoint: '', // HTTPS endpoint accepting JSON; return { "success": true } ONLY after accepting the inquiry.
   featuresConfirmed: false,
   installationConfirmed: false,
