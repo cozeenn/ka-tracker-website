@@ -20,6 +20,8 @@ This site showcases solutions and illustrative tracking concepts. There is no qu
 
 The “Follow the Journey” design includes keyboard-accessible vehicle tabs, selectable process markers, scroll progress/navigation, expandable features, and a sample route player with pause, reset, and scrubbing. Playback starts only on request and pauses when the demo leaves the viewport or the browser tab is hidden. Reduced-motion preferences disable the decorative scroll animation. Shared original SVG illustrations live in `src/visuals.js`.
 
+Motion is centralized in `src/motion.js` and CSS timing variables: 160ms press feedback, 280ms controls/content, and 440ms section entrances, with one shared easing curve. Accordions handle interrupted animations; menu and dialog transitions preserve keyboard access. Reduced-motion preferences disable decorative motion, including when changed while the page is open.
+
 ## Verification
 
 `npm test` runs browser checks (requires Playwright Chromium). Includes desktop/mobile overflow, navigation/menu, FAQ keyboard interaction, privacy dialog, showcase links and absence of quote forms. `npm run build` creates the production bundle. The tracking UI is always labeled illustrative and uses sample data.

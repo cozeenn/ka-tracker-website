@@ -52,6 +52,25 @@ test('reduced motion keeps scroll illustration still',async({page})=>{
  expect(await page.locator('#hero-marker').getAttribute('cy')).toBe(start);
  await expect(page.locator('#trip-progress')).toHaveValue('0');
 });
+test('accordion transitions settle after rapid input and honor reduced motion',async({page})=>{
+ await page.goto('/');
+ const details=page.locator('#faqs details').first();
+ const summary=details.locator('summary');
+ await summary.focus();
+ await page.keyboard.press('Enter');
+ await page.keyboard.press('Enter');
+ await page.keyboard.press('Enter');
+ await expect(details).toHaveAttribute('open','');
+ await expect(details).not.toHaveAttribute('data-expanded');
+ await page.keyboard.press('Enter');
+ await expect(details).not.toHaveAttribute('open');
+ await page.emulateMedia({reducedMotion:'reduce'});
+ await page.keyboard.press('Enter');
+ await expect(details).toHaveAttribute('open','');
+ expect(await details.evaluate(el=>el.getAnimations().length)).toBe(0);
+ await page.getByRole('tab',{name:/Motorcycles/}).click();
+ expect(await page.locator('.vehicle-copy').evaluate(el=>el.getAnimations().length)).toBe(0);
+});
 for(const width of [320,375,768,1024,1440])test(`responsive layout ${width}`,async({page})=>{
  await page.setViewportSize({width,height:900});await page.goto('/');
  expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);

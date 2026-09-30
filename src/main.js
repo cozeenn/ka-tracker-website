@@ -1,4 +1,5 @@
 import { business as b } from './config.js';
+import { animateContent, setupMotion } from './motion.js';
 import { vehicleIllustration } from './vehicles.js';
 import { esc, icon, brand, map, truck } from './visuals.js';
 const journeys = [
@@ -42,12 +43,14 @@ $('#reset-trip').onclick=()=>{progress=0;stopTrip();drawTrip();};
 $('#trip-progress').addEventListener('input',e=>{progress=Number(e.target.value);stopTrip();drawTrip();});
 document.addEventListener('visibilitychange',()=>{if(document.hidden)stopTrip();});
 new IntersectionObserver(entries=>{if(!entries[0].isIntersecting&&playing)stopTrip();},{threshold:.1}).observe($('#showcase'));
-function setVehicle(i){selected=i;const j=journeys[i];document.querySelectorAll('[data-vehicle]').forEach((button,n)=>{button.setAttribute('aria-selected',n===i);button.tabIndex=n===i?0:-1;});$('#vehicle-panel').setAttribute('aria-labelledby',`vehicle-tab-${i}`);$('#vehicle-kicker').textContent=j.short;$('#vehicle-title').textContent=j.title;$('#vehicle-description').textContent=j.text;$('#vehicle-route').textContent=j.route;$('#trip-vehicle').textContent=j.label;$('#vehicle-art').innerHTML=vehicleIllustration(j.icon);progress=0;stopTrip();drawTrip();}
+function setVehicle(i){selected=i;const j=journeys[i];document.querySelectorAll('[data-vehicle]').forEach((button,n)=>{button.setAttribute('aria-selected',n===i);button.tabIndex=n===i?0:-1;});$('#vehicle-panel').setAttribute('aria-labelledby',`vehicle-tab-${i}`);$('#vehicle-kicker').textContent=j.short;$('#vehicle-title').textContent=j.title;$('#vehicle-description').textContent=j.text;$('#vehicle-route').textContent=j.route;$('#trip-vehicle').textContent=j.label;$('#vehicle-art').innerHTML=vehicleIllustration(j.icon);animateContent(document.querySelector('#vehicle-art'),document.querySelector('.vehicle-copy'));progress=0;stopTrip();drawTrip();}
 document.querySelectorAll('[data-vehicle]').forEach(button=>{button.onclick=()=>setVehicle(Number(button.dataset.vehicle));button.onkeydown=e=>{let next;if(e.key==='ArrowRight')next=(selected+1)%3;if(e.key==='ArrowLeft')next=(selected+2)%3;if(e.key==='Home')next=0;if(e.key==='End')next=2;if(next!==undefined){e.preventDefault();setVehicle(next);$(`#vehicle-tab-${next}`).focus();}};});
 function setStation(i){const s=stations[i];document.querySelectorAll('[data-station]').forEach((button,n)=>button.setAttribute('aria-pressed',n===i));$('#station-detail').innerHTML=`<span class="station-index">0${i+1} / THE APPROACH</span>${icon(s.icon)}<h3>${s.title}</h3><p>${esc(s.text)}</p><small>${s.detail}</small>`;}
-document.querySelectorAll('[data-station]').forEach(button=>button.onclick=()=>setStation(Number(button.dataset.station)));setVehicle(0);setStation(0);
+document.querySelectorAll('[data-station]').forEach(button=>button.onclick=()=>{setStation(Number(button.dataset.station));animateContent(document.querySelector('#station-detail'));});setVehicle(0);setStation(0);
 let scrollQueued=false;
 function updateScroll(){const total=document.documentElement.scrollHeight-innerHeight;$('.reading-progress').style.width=`${total>0?scrollY/total*100:0}%`;if(!reduced.matches){const p=$('#hero-path');const point=p.getPointAtLength(p.getTotalLength()*Math.min(1,scrollY/600));$('#hero-marker').setAttribute('cx',point.x);$('#hero-marker').setAttribute('cy',point.y);}scrollQueued=false;}
 addEventListener('scroll',()=>{if(!scrollQueued){scrollQueued=true;requestAnimationFrame(updateScroll);}},{passive:true});updateScroll();
 const sectionsObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting)document.querySelectorAll('.route-nav a').forEach(a=>{if(a.hash===`#${entry.target.id}`)a.setAttribute('aria-current','location');else a.removeAttribute('aria-current');});}),{rootMargin:'-15% 0px -55% 0px'});['solutions','how-it-works','showcase','features','about'].forEach(id=>sectionsObserver.observe(document.getElementById(id)));
 if(b.siteUrl){const canonical=document.createElement('link');canonical.rel='canonical';canonical.href=b.siteUrl;document.head.append(canonical);}
+
+setupMotion();
